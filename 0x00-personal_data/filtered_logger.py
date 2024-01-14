@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 import re
 
-
 def filter_datum(fields, redaction, message, separator):
-    return re.sub(r'(?<={}=)([^{}]+)'.format(separator, separator), redaction, message)
-
+    return re.sub(r'(?<=\b(?:' + '|'.join(fields) + r')' + re.escape(separator) + r')\S+', redaction, message)
 
 if __name__ == "__main__":
     fields = ["password", "date_of_birth"]
