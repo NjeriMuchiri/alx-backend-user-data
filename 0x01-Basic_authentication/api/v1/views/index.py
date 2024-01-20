@@ -13,11 +13,6 @@ def status() -> str:
     """
     return jsonify({"status": "OK"})
 
-@app_views.route('/api/v1/unauthorized', methods=['GET'], strict_slashes=False)
-def unauthorized_endpoint() -> str:
-    """Raising a 401 error using abort"""
-    abort(401)
-
 @app_views.route('/stats/', strict_slashes=False)
 def stats() -> str:
     """ GET /api/v1/stats
@@ -28,3 +23,15 @@ def stats() -> str:
     stats = {}
     stats['users'] = User.count()
     return jsonify(stats)
+
+
+@app_views.route('/api/v1/unauthorized', methods=['GET'], strict_slashes=False)
+def unauthorized_endpoint() -> str:
+    """Raising a 401 error using abort"""
+    abort(401)
+
+
+@app_views.route('/api/v1/forbidden', methods=['GET'], strict_slashes=False)
+def forbidden_endpoint() -> str:
+    """Raises a 403 error using abort"""
+    abort(403)
