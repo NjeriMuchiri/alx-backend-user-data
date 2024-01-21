@@ -29,7 +29,7 @@ def unauthorized_error(error) -> str:
 @app.errorhandler(403)
 def forbidden_err(error) -> str:
     """Method for handling the forbidde err"""
-    return sonify({"error": "Forbidden"}), 403
+    return jsonify({"error": "Forbidden"}), 403
 
 
 if __name__ == "__main__":
