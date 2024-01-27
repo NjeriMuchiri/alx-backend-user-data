@@ -48,7 +48,6 @@ class Auth:
         """ Validates current user """
         return None
 
-
     def session_cookie(self, request=None):
         """Method that returns a cookie value from a request"""
 
